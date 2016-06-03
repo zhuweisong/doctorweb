@@ -12,11 +12,11 @@ use LeanCloud\CloudException;
 	LeanClient::initialize("tnAvXokcOflTtw7Img2iurs0-gzGzoHsz",
 		"xq79UpeXDLtEplPtmxxO7JDG", "605P2gTQ8sDBY1VGTTJ5tlxO");
 
-	$orderid = $_GET['orderid'];
-    echo $orderid;
+	$qid = (int)$_GET['qid'];
+    echo $qid;
 
     $query = new LeanQuery("question");
-    $query->equalTo("iOrder", (int)$orderid);
+    $query->equalTo(QUESTION_QID, $qid);
     $objects = $query->find();
 ?>
 

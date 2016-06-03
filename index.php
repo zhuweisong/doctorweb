@@ -51,8 +51,8 @@ use LeanCloud\CloudException;
 				<td><?php echo $obj->get(QUESTION_OPTION) ?></td>
 				<td><?php echo $obj->get("iChapter") ?></td>
 				<td><?php echo $obj->get("updatedAt")->format('Y-m-d H:i:s') ?></td>
-				<td>&nbsp;&nbsp;<a href="updatequestion.php?orderid=<?php  echo $obj->get("iOrder") ?>" target="_blank">update</a>&nbsp;&nbsp;</td>
-    			<td>&nbsp;&nbsp;<a href="question-delete.php?orderid=<?php  echo $obj->get("iOrder") ?>" target="_blank">delete</a>&nbsp;&nbsp;</td>
+				<td>&nbsp;&nbsp;<a href="updatequestion.php?qid=<?php  echo $obj->get(QUESTION_QID) ?>" target="_blank">update</a>&nbsp;&nbsp;</td>
+    			<td>&nbsp;&nbsp;<a href="question-delete.php?qid=<?php  echo $obj->get(QUESTION_QID) ?>" target="_blank">delete</a>&nbsp;&nbsp;</td>
 			</tr>
            <?php
                }
