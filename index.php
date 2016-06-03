@@ -29,6 +29,8 @@ use LeanCloud\CloudException;
 	<a href="chapter.php">Chapter</a>
 
     <form name="myForm" method="post" action="index.php">
+    <br/><br/><a href="question-new.php?orderid=-1 ?>" target="_blank">new add</a><br/><br/>
+
     <table  border="1" cellspacing="0" cellpadding="0">
         <caption>Question<?php echo $cnt?>
 		<th>index</th>
