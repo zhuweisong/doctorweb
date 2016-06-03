@@ -7,7 +7,7 @@ use LeanCloud\LeanClient;
 use LeanCloud\CloudException;
 
     require_once("autoload.php");
-	require_once('./util.php');
+	require_once('./util.php');
 
 	LeanClient::initialize("tnAvXokcOflTtw7Img2iurs0-gzGzoHsz",
 		"xq79UpeXDLtEplPtmxxO7JDG", "605P2gTQ8sDBY1VGTTJ5tlxO");
@@ -35,6 +35,7 @@ use LeanCloud\CloudException;
         <caption>Question<?php echo $cnt?>
 		<th>index</th>
 		<th>title</th>
+  		<th>option</th>
 		<th>chapter</th>
 		<th>updatedAt</th>
 		<th>update</th>
@@ -43,11 +44,11 @@ use LeanCloud\CloudException;
          <?php
               forEach($objects as $obj) {
                    if ($obj instanceof LeanObject) {
-                      $title = $obj->get("title");
          ?>
          <tr align="center">
 				<td><?php echo $obj->get("iOrder") ?></td>
 				<td><?php echo $obj->get("title") ?></td>
+				<td><?php echo $obj->get(QUESTION_OPTION) ?></td>
 				<td><?php echo $obj->get("iChapter") ?></td>
 				<td><?php echo $obj->get("updatedAt")->format('Y-m-d H:i:s') ?></td>
 				<td>&nbsp;&nbsp;<a href="updatequestion.php?orderid=<?php  echo $obj->get("iOrder") ?>" target="_blank">update</a>&nbsp;&nbsp;</td>
