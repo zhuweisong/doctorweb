@@ -12,9 +12,9 @@ use LeanCloud\CloudException;
 	LeanClient::initialize("tnAvXokcOflTtw7Img2iurs0-gzGzoHsz",
 		"xq79UpeXDLtEplPtmxxO7JDG", "605P2gTQ8sDBY1VGTTJ5tlxO");
 
-    $query = new LeanQuery("question");
+    $query = new LeanQuery("chapter");
     $cnt   = $query->count();
-    $query->ascend(QUESTION_ORDER);
+    $query->ascend(CHAPTER_ORDER);
     $objects = $query->find();
 ?>
 
@@ -22,21 +22,18 @@ use LeanCloud\CloudException;
     <head>
         <title>Question</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
-		<link href="./login/loginmodule.css" rel="stylesheet" type="text/css" />
     </head>
         <body>
-    <a href="index.php">Question</a> |
+    <a href="question.php">Question</a> |
 	<a href="chapter.php">Chapter</a>
 
-    <form name="myForm" method="post" action="index.php">
-    <br/><br/><a href="question-new.php?orderid=-1 ?>" target="_blank">new add</a><br/><br/>
+    <form name="myForm" method="post" action="chapter.php">
+    <br/><br/><a href="chapter-newadd.php?orderid=-1 ?>" target="_blank">new add</a><br/><br/>
 
     <table  border="1" cellspacing="0" cellpadding="0">
-        <caption>Question<?php echo $cnt?>
-		<th>index</th>
-		<th>title</th>
-  		<th>option</th>
-		<th>chapter</th>
+        <caption>chapter<?php echo $cnt?>
+		<th>iOrder</th>
+		<th>desc</th>
 		<th>updatedAt</th>
 		<th>update</th>
   		<th>delete</th>
@@ -46,13 +43,11 @@ use LeanCloud\CloudException;
                    if ($obj instanceof LeanObject) {
          ?>
          <tr align="center">
-				<td><?php echo $obj->get("iOrder") ?></td>
-				<td><?php echo $obj->get("title") ?></td>
-				<td><?php echo $obj->get(QUESTION_OPTION) ?></td>
-				<td><?php echo $obj->get("iChapter") ?></td>
+				<td><?php echo $obj->get(CHAPTER_ORDER) ?></td>
+				<td><?php echo $obj->get(CHAPTER_DESC) ?></td>
 				<td><?php echo $obj->get("updatedAt")->format('Y-m-d H:i:s') ?></td>
-				<td>&nbsp;&nbsp;<a href="updatequestion.php?qid=<?php  echo $obj->get(QUESTION_QID) ?>" target="_blank">update</a>&nbsp;&nbsp;</td>
-    			<td>&nbsp;&nbsp;<a href="question-delete.php?qid=<?php  echo $obj->get(QUESTION_QID) ?>" target="_blank">delete</a>&nbsp;&nbsp;</td>
+				<td>&nbsp;&nbsp;<a href="chapter-update.php?id=<?php  echo $obj->get(CHAPTER_QID) ?>" target="_blank">update</a>&nbsp;&nbsp;</td>
+    			<td>&nbsp;&nbsp;<a href="chapter-delete.php?id=<?php  echo $obj->get(CHAPTER_QID) ?>" target="_blank">delete</a>&nbsp;&nbsp;</td>
 			</tr>
            <?php
                }
