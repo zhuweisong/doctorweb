@@ -25,10 +25,10 @@
   	$obj->set(QUESTION_ATTR, $attr);
   	$obj->set(QUESTION_TITLE, $title);
 //
-  	$obj->set(QUESTION_PICTURE, $title);
+//  	$obj->set(QUESTION_PICTURE, $title);
 //
   	$obj->set(QUESTION_DETAILANALYSIS, $title);
   	$obj->set(QUESTION_ORDER, $iOrder);
   	$obj->save();
-
+    echo "succeed"
 ?>

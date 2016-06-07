@@ -10,7 +10,8 @@ use LeanCloud\CloudException;
     require_once('./util.php');
 
 	LeanClient::initialize("tnAvXokcOflTtw7Img2iurs0-gzGzoHsz",	"xq79UpeXDLtEplPtmxxO7JDG", "605P2gTQ8sDBY1VGTTJ5tlxO");
-
+    $query = new LeanQuery("chapter");
+    $cnt   = $query->count();
 ?>
 
 <html>
@@ -25,7 +26,7 @@ use LeanCloud\CloudException;
 
 		<form name="myForm" method="post" action="chapter-new-exec.php">
 		<br><br><br>
-		    Order:<input  name='iOrder'/><br><br>
+		    Order:<input  name='iOrder' value="<?php echo $cnt+1 ?>"/><br><br>
 			Title:<input name='title'/><br><br>
             <input type="submit" name="Submit" value="submit">
 		</form>

@@ -13,11 +13,16 @@ use LeanCloud\CloudException;
 		"xq79UpeXDLtEplPtmxxO7JDG", "605P2gTQ8sDBY1VGTTJ5tlxO");
 
 	$qid = (int)$_GET['qid'];
-    echo $qid;
+
 
     $query = new LeanQuery("question");
     $query->equalTo(QUESTION_QID, $qid);
+    echo "qid:".$qid;
     $objects = $query->find();
+
+    $query = new LeanQuery("chapter");
+    $query->ascend(CHAPTER_ORDER);
+    $chapters = $query->find();
 ?>
 
 <html>
@@ -30,22 +35,38 @@ use LeanCloud\CloudException;
     <a href="index.php">Question</a> |
 	<a href="chapter.php">Chapter</a>
 
-		<form name="myForm" method="post" action="question-exec.php">
+		<form name="myForm" method="post" action="question-update-exec.php">
 		<br><br><br>
          <?php
               forEach($objects as $obj) {
                    if ($obj instanceof LeanObject) {
-                      $title = $obj->get("title");
+                      $chapterid = $obj->get(QUESTION_CHAPTER);
+                      $attr = $obj->get(QUESTION_ATTR);
          ?>
                 <input type="hidden" value="<?php echo $obj->get(QUESTION_QID) ?>" name='qid'/>
-				Order:<input value="<?php echo $obj->get("iOrder") ?>" name='iOrder'/><br><br>
-				Chapter:<input value="<?php echo $obj->get(QUESTION_CHAPTER) ?>" name='iChapter'/><br><br>
+				Order:<input value="<?php echo $obj->get(QUESTION_ORDER) ?>" name='iOrder'/><br><br>
 				Title:<textarea rows="4" cols="100" name='title'><?php echo $obj->get("title") ?> </textarea><br><br>
 				Option:<textarea rows="4" cols="100" name='option'><?php echo $obj->get("option") ?></textarea><br><br>
 				Answer:<textarea rows="4" cols="100" name='sAnswer'><?php echo $obj->get("sAnswer") ?></textarea><br><br>
-        Single£º<input type="radio" checked="checked" name="singlechoice" value="0" />
-        MultiChoice£º<input type="radio" name="singlechoice" value="1" /><br><br>
-        <input type="submit" name="Submit" value="submit">
+
+				Attr:<select name="singlechoice" >
+                    <option value ="0" <?php if ($attr==0) echo "selected ='selected'"; ?>>single-choice</option>
+                    <option value ="1" <?php if ($attr==1) echo "selected ='selected'"; ?>>multi-choice</option>
+                </select><br><br>
+
+				Chapter:<select name="iChapter" >
+				    <?php
+				        $i = 0;
+                        forEach($chapters as $chapter) {
+                            if ($chapter instanceof LeanObject) {
+                    ?>
+                    <option value ="<?php $chapter->get(CHAPTER_ORDER) ?>" <?php if ($chapterid==$i) echo "selected ='selected'"; ?>><?php echo $chapter->get(CHAPTER_ORDER)."-".$chapter->get(CHAPTER_DESC) ?></option>
+                 <?php
+                       $i = $i+1;
+                           }
+                        }
+                     ?><br><br>
+        <br><br><input type="submit" name="Submit" value="submit">
           <?php
                }
             }
