@@ -41,7 +41,7 @@ use LeanCloud\CloudException;
                         forEach($objects as $obj) {
                             if ($obj instanceof LeanObject) {
                     ?>
-                    <option value ="<?php $obj->get(CHAPTER_ORDER) ?>"><?php echo $obj->get(CHAPTER_DESC) ?></option>
+                    <option value ="<?php echo $obj->get(CHAPTER_QID) ?>"><?php echo $obj->get(CHAPTER_QID)."-".$obj->get(CHAPTER_DESC) ?></option>
                  <?php
                            }
                         }

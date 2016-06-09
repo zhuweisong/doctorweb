@@ -56,11 +56,11 @@ use LeanCloud\CloudException;
 
 				Chapter:<select name="iChapter" >
 				    <?php
-				        $i = 0;
                         forEach($chapters as $chapter) {
                             if ($chapter instanceof LeanObject) {
+                                $currid = (int)$chapter->get(CHAPTER_ORDER)
                     ?>
-                    <option value ="<?php $chapter->get(CHAPTER_ORDER) ?>" <?php if ($chapterid==$i) echo "selected ='selected'"; ?>><?php echo $chapter->get(CHAPTER_ORDER)."-".$chapter->get(CHAPTER_DESC) ?></option>
+                    <option value ="<?php echo $currid ?>" <?php if ($chapterid==$currid) echo "selected ='selected'"; ?>><?php echo $chapter->get(CHAPTER_ORDER)."-".$chapter->get(CHAPTER_DESC) ?></option>
                  <?php
                        $i = $i+1;
                            }

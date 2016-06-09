@@ -21,6 +21,8 @@
     $query->equalTo(QUESTION_QID, $qid);
     $objects = $query->find();
 
+
+
     echo $iOrder." update  " ;
 
     forEach($objects as $obj) {

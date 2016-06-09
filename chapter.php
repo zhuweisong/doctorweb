@@ -34,6 +34,7 @@ use LeanCloud\CloudException;
         <caption>chapter<?php echo $cnt?>
 		<th>iOrder</th>
 		<th>desc</th>
+		<th>question count</th>
 		<th>updatedAt</th>
 		<th>update</th>
   		<th>delete</th>
@@ -45,6 +46,7 @@ use LeanCloud\CloudException;
          <tr align="center">
 				<td><?php echo $obj->get(CHAPTER_ORDER) ?></td>
 				<td><?php echo $obj->get(CHAPTER_DESC) ?></td>
+				<td><?php echo $obj->get(CHAPTER_QUESTION_COUNT) ?></td>
 				<td><?php echo $obj->get("updatedAt")->format('Y-m-d H:i:s') ?></td>
 				<td>&nbsp;&nbsp;<a href="chapter-update.php?id=<?php  echo $obj->get(CHAPTER_QID) ?>" target="_blank">update</a>&nbsp;&nbsp;</td>
     			<td>&nbsp;&nbsp;<a href="chapter-delete.php?id=<?php  echo $obj->get(CHAPTER_QID) ?>" target="_blank">delete</a>&nbsp;&nbsp;</td>

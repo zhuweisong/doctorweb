@@ -12,14 +12,14 @@
 
 
 	$iOrder = (int)$_POST['iOrder'];
-	$iChapter = (int)$_POST['iChapter'];
+	$iChapterId = (int)$_POST['iChapter'];
 	$title = $_POST['title'];
 	$option = $_POST['option'];
 	$sAnswer = $_POST['sAnswer'];
 	$attr = (int)$_POST['singlechoice'];
 
     $obj = new LeanObject("question");
-    $obj->set(QUESTION_CHAPTER, $iChapter);
+    $obj->set(QUESTION_CHAPTER, $iChapterId );
     $obj->set(QUESTION_OPTION, $option);
     $obj->set(QUESTION_ANSWER, $sAnswer);
   	$obj->set(QUESTION_ATTR, $attr);
@@ -27,8 +27,22 @@
 //
 //  	$obj->set(QUESTION_PICTURE, $title);
 //
-  	$obj->set(QUESTION_DETAILANALYSIS, $title);
+//  	$obj->set(QUESTION_DETAILANALYSIS, $title);
   	$obj->set(QUESTION_ORDER, $iOrder);
   	$obj->save();
-    echo "succeed"
+
+
+    $query = new LeanQuery("chapter");
+    $query->equalTo(CHAPTER_QID, $iChapterId);
+    $objects = $query->find();
+
+    forEach($objects as $chpater) {
+       if ($chpater instanceof LeanObject) {
+            $count = $chpater->get(CHAPTER_QUESTION_COUNT);
+            $chpater->set(CHAPTER_QUESTION_COUNT, $count + 1);
+            $chpater->save();
+        }
+    }
+
+    echo "succeed"."|".$iOrder."|".$iChapterId;
 ?>
