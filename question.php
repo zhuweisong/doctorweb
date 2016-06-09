@@ -45,8 +45,8 @@ use LeanCloud\CloudException;
                    if ($obj instanceof LeanObject) {
          ?>
          <tr align="center">
-				<td><?php echo $obj->get("iOrder") ?></td>
-				<td align="left"><?php echo $obj->get("title") ?></td>
+				<td><?php echo $obj->get(QUESTION_ORDER) ?></td>
+				<td align="left"><?php echo $obj->get(QUESTION_TITLE) ?></td>
 				<td align="left"><?php echo $obj->get(QUESTION_OPTION) ?></td>
 				<td><?php echo $obj->get(QUESTION_CHAPTER) ?></td>
 				<td><?php echo $obj->get("updatedAt")->format('Y-m-d H:i:s') ?></td>

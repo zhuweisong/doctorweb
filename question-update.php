@@ -27,7 +27,7 @@ use LeanCloud\CloudException;
 
 <html>
     <head>
-        <title>Question</title>
+        <title>Question update</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
 		<link href="./login/loginmodule.css" rel="stylesheet" type="text/css" />
     </head>
@@ -58,9 +58,9 @@ use LeanCloud\CloudException;
 				    <?php
                         forEach($chapters as $chapter) {
                             if ($chapter instanceof LeanObject) {
-                                $currid = (int)$chapter->get(CHAPTER_ORDER)
+                                $currid = (int)$chapter->get(CHAPTER_QID)
                     ?>
-                    <option value ="<?php echo $currid ?>" <?php if ($chapterid==$currid) echo "selected ='selected'"; ?>><?php echo $chapter->get(CHAPTER_ORDER)."-".$chapter->get(CHAPTER_DESC) ?></option>
+                    <option value ="<?php echo $currid ?>" <?php if ($chapterid==$currid) echo "selected ='selected'"; ?>><?php echo $chapter->get(CHAPTER_QID)."-".$chapter->get(CHAPTER_DESC) ?></option>
                  <?php
                        $i = $i+1;
                            }

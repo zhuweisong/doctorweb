@@ -20,7 +20,7 @@ use LeanCloud\CloudException;
 
 <html>
     <head>
-        <title>Question</title>
+        <title>chapter</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
     </head>
         <body>

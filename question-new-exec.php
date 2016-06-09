@@ -19,7 +19,7 @@
 	$attr = (int)$_POST['singlechoice'];
 
     $obj = new LeanObject("question");
-    $obj->set(QUESTION_CHAPTER, $iChapterId );
+    $obj->set(QUESTION_CHAPTER, $iChapterId);
     $obj->set(QUESTION_OPTION, $option);
     $obj->set(QUESTION_ANSWER, $sAnswer);
   	$obj->set(QUESTION_ATTR, $attr);
