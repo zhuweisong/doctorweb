@@ -31,7 +31,7 @@ use LeanCloud\CloudException;
 
 		<form name="myForm" method="post" action="question-new-exec.php">
 		<br><br><br>
-				Order:<input name='iOrder' value="<?php echo $cnt+1 ?>"/><br><br>
+				Order:<input name='iOrder' value="<?php echo $cnt ?>"/><br><br>
 				Attr:<select name="singlechoice" >
                     <option value ="0">single-choice</option>
                     <option value ="1">multi-choice</option>
